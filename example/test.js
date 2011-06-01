@@ -25,10 +25,18 @@ function step() {
 	var secs = interval / 1000.0;
 
 	// Wipe out the screen
-	var oldFill = context.fillStyle;
+	context.save();
 	context.fillStyle = "white";
 	context.fillRect(0, 0, canvas.width, canvas.height);
-	context.fillStyle = oldFill;
+	context.restore();
+
+	// Draw a quickie frame around it
+	context.moveTo(0, 0);
+	context.lineTo(canvas.width, 0);
+	context.lineTo(canvas.width, canvas.height);
+	context.lineTo(0, canvas.height);
+	context.lineTo(0, 0);
+	context.stroke();
 	
 	// Handle ball bouncing
 	if(y + 32 >= canvas.height) {

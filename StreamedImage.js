@@ -13,10 +13,10 @@ function StreamedImage () {
 		// Draws an image to a context
 		if(!this.isLoaded) {
 			// Draw something else
-			var oldFill = context.fillStyle;
+			context.save();
 			context.fillStyle = '#f0f'; // pink
 			context.fillRect(x, y, width, height);
-			context.fillStyle = oldFill;
+			context.restore();
 		}
 		else {
 			// Draw the loaded texture
