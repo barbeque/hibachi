@@ -34,11 +34,11 @@ function step() {
 	if(y + 32 >= canvas.height) {
 		// Apply bounce
 		y = (canvas.height - 33);
-		dy = -1 * dy;
+		dy = -dy;
 	}
 	else if(y <= 0) {
 		y = 1;
-		dy = -1 * dy;
+		dy = -dy;
 	}
 	else {
 		// Apply speed
