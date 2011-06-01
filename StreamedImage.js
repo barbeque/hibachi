@@ -4,9 +4,10 @@
 function StreamedImage () {
 	this.isLoaded = false;
 	this.image = new Image();
+	this.image.owner = this;
 	this.image.onload = function() {
 		// Informs us when the image is available.
-		this.isLoaded = true;
+		this.owner.isLoaded = true;
 	}
 	this.draw = function(context, x, y, width, height) {
 		// Draws an image to a context
