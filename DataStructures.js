@@ -16,3 +16,18 @@ function arrayRemove(list, toRemove) {
 	}
 	return list;
 }
+
+/**
+*	Builds a 2D array
+*	@param {columns}	The number of columns. Must be over 0.
+*	@param {rows}		The number of rows. Must be over 0.
+*	@returns		A 2D array of columns * rows entries,
+				in row major order.
+*/
+function make2DArray(columns, rows) {
+	var output = new Array(rows);
+	for(y = 0; y < output.length; y++) {
+		output[y] = new Array(columns);
+	}
+	return output;
+}
