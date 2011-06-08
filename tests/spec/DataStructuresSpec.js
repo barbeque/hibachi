@@ -31,10 +31,20 @@ describe("DataStructures", function() {
 			}
 			expect(test[0]).toEqual("Banana");
 			expect(test[1]).toEqual("Grape");
+
+			arrayRemove(test, "Grape");
+			expect(test.length).toEqual(1);
+			expect(test[0]).toEqual("Banana");
+
+			arrayRemove(test, "Banana");
+			expect(test.length).toEqual(0);
 			});
 		it("should be able to ignore trying to delete something that isn't there", function() {
 			var test = ["Orange", "Banana", "Grape"];
 			arrayRemove(test, "Kumquat");
 			expect(test.length).toEqual(3);
+			expect(test[0]).toEqual("Orange");
+			expect(test[1]).toEqual("Banana");
+			expect(test[2]).toEqual("Grape");
 			});
 });
