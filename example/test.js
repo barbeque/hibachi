@@ -1,4 +1,6 @@
-var streamy;
+var firstFrame;
+var secondFrame;
+var animation;
 var canvas;
 var context;
 
@@ -8,10 +10,22 @@ var y = 64.0
 var dx = 450.2
 var dy = -50.4
 
+var t = 0;
+
 function main() {
 	// Blahblah.
-	streamy = new StreamedImage();
-	streamy.image.src = "test.png";
+	frames = new Array();
+	
+	firstFrame = new StreamedImage();
+	firstFrame.image.src = "test.png";
+	frames.push(firstFrame);
+	
+	secondFrame = new StreamedImage();
+	secondFrame.image.src = "test2.png";
+	frames.push(secondFrame);
+	
+	animation = new Animation();
+	animation.setFrames(frames);
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
@@ -23,6 +37,7 @@ function main() {
 // Invoked every step of the loop
 function step() {
 	var secs = interval / 1000.0;
+	t += secs;
 
 	// Wipe out the screen
 	context.save();
@@ -66,6 +81,7 @@ function step() {
 		x += dx * secs;
 	}
 	
-	// Stamp an example on there
-	streamy.draw(context, x, y, 32, 32);
+	// Draw current frame of the animation on there
+	var currentFrame = animation.getFrameAt(t);
+	currentFrame.draw(context, x, y, 32, 32);
 }
