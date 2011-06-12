@@ -20,4 +20,14 @@ describe("Animation", function() {
 			expect(animation.getFrameAt(4.5)).toEqual(1);
 			expect(animation.getFrameAt(5.0)).toEqual(2);
 			});
+		it("should work even with just a single frame", function() {
+			var animation = new Animation();
+			var frames = [1];
+			animation.setFrames(frames);
+			animation.frameInterval = 0.5;
+			
+			for(i = 0.0; i < 15.0; i += 0.2) {
+				expect(animation.getFrameAt(i)).toEqual(1);
+			}	
+		});
 });
