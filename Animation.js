@@ -1,3 +1,8 @@
+/**
+*  Creates a single animation.
+*  @class	A type that encapsulates an animation and handles indexing
+*  			into the animation based on elapsed time. Automatically loops.
+*/
 function Animation() {
 	/**
 	*  Time, in seconds, between frames

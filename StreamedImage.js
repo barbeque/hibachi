@@ -1,6 +1,9 @@
-// "streamed" images that provide a placeholder until they are
-// fully loaded.
-
+/**
+*  Creates a streamed image with no resource URI set.
+*  @class	A "streamed" image that provides a placeholder until it is
+*  			fully loaded, and which contains convenience methods for
+*  			rendering to a 2D canvas context.
+*/
 function StreamedImage () {
 	this.isLoaded = false;
 	this.image = new Image();
