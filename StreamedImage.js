@@ -12,11 +12,11 @@ function StreamedImage () {
 	/**
 	*  Draws the image to screen, or a surrogate if the image is not
 	*  yet loaded.
-	*  @param {context}	2D canvas context to draw to
-	*  @param {x}		X-location in pixels to draw to
-	*  @param {y}		Y-location in pixels to draw to
-	*  @param {width}	Width that the image will end up being, in pixels
-	*  @param {height}	Height that the image will end up being, in pixels
+	*  @param context	2D canvas context to draw to
+	*  @param x			X-location in pixels to draw to
+	*  @param y			Y-location in pixels to draw to
+	*  @param width		Width that the image will end up being, in pixels
+	*  @param height	Height that the image will end up being, in pixels
 	*/
 	this.draw = function(context, x, y, width, height) {
 		// Draws an image to a context

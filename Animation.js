@@ -7,7 +7,7 @@ function Animation() {
 	
 	/**
 	*  Sets the frame images for the animation
-	*  @param {frames}	An array of frame images for the animation
+	*  @param frames	An array of frame images for the animation
 	*/
 	this.setFrames = function(frames) {
 		this.frames = frames;
@@ -15,7 +15,7 @@ function Animation() {
 	
 	/**
 	*  Gets a frame of the animation suitable for drawing
-	*  @param {t}	The time, in seconds, into the animation
+	*  @param t		The time, in seconds, into the animation
 	*  @returns		The frame, in the form of a drawable image
 	*/
 	this.getFrameAt = function(t) {
