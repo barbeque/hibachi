@@ -12,6 +12,8 @@ var dy = -50.4
 
 var t = 0;
 
+var keyboard;
+
 function main() {
 	// Blahblah.
 	frames = new Array();
@@ -29,6 +31,8 @@ function main() {
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
+
+	keyboard = new Keyboard();
 
 	// 20 fps
 	setInterval(step, interval);
@@ -79,6 +83,21 @@ function step() {
 	}
 	else {
 		x += dx * secs;
+	}
+
+	// Let the keyboard ruin it for you
+	var keyboardAcceleration = 200.5;
+	if(keyboard.isKeyDown(keyboard.upArrowKeyCode)) {
+		dy -= keyboardAcceleration * secs;
+	}
+	else if(keyboard.isKeyDown(keyboard.downArrowKeyCode)) {
+		dy += keyboardAcceleration * secs;
+	}
+	if(keyboard.isKeyDown(keyboard.leftArrowKeyCode)) {
+		dx -= keyboardAcceleration * secs;
+	}
+	else if(keyboard.isKeyDown(keyboard.rightArrowKeyCode)) {
+		dx += keyboardAcceleration * secs;
 	}
 	
 	// Draw current frame of the animation on there

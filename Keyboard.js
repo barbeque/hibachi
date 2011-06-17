@@ -21,7 +21,7 @@ Keyboard = function() {
 		@param e key down event
 	*/
 	this.onKeyDown = function(e) {
-		this.keyDownState[e.keyCode] = true;
+		this.keyboardState.keyDownState[e.keyCode] = true;
 	}
 	
 	/**
@@ -29,7 +29,8 @@ Keyboard = function() {
 		@param e key up event
 	*/
 	this.onKeyUp = function(e) {
-		this.keyDownState[e.keyCode] = false;
+		// "this" refers to window in this case
+		this.keyboardState.keyDownState[e.keyCode] = false;
 	}
 
 	/**
@@ -43,4 +44,5 @@ Keyboard = function() {
 	
 	window.addEventListener('keydown', this.onKeyDown, true);
 	window.addEventListener('keyup', this.onKeyUp, true);
+	window.keyboardState = this;
 }
