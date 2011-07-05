@@ -21,7 +21,7 @@ Keyboard = function() {
 		@param e key down event
 	*/
 	this.onKeyDown = function(e) {
-		this.keyboardState.keyDownState[e.keyCode] = true;
+		window.keyboardHandler.keyDownState[e.keyCode] = true;
 	}
 	
 	/**
@@ -29,20 +29,20 @@ Keyboard = function() {
 		@param e key up event
 	*/
 	this.onKeyUp = function(e) {
-		// "this" refers to window in this case
-		this.keyboardState.keyDownState[e.keyCode] = false;
+		// It's assumed that 'this' is a DOMWindow. There's a hack for Jasmine to work properly
+		window.keyboardHandler.keyDownState[e.keyCode] = false;
 	}
 
-	/**
-		Tells us whether or not a key is currently down.
-		@param keyId	The key code for the key (e.g. 38)
-		@return		True if the key is down.
-	*/
-	this.isKeyDown = function(keyId) {
-		return this.keyDownState[keyId];
-	}
-	
 	window.addEventListener('keydown', this.onKeyDown, true);
 	window.addEventListener('keyup', this.onKeyUp, true);
-	window.keyboardState = this;
+	window.keyboardHandler = this;
+}
+
+/**
+	Tells us whether or not a key is currently down.
+	@param keyId	The key code for the key (e.g. 38)
+	@return		True if the key is down.
+*/
+Keyboard.prototype.isKeyDown = function(keyId) {
+	return this.keyDownState[keyId];
 }
