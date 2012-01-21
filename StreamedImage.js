@@ -39,6 +39,6 @@ function StreamedImage () {
 
 GetStreamedImage = function(imageUri) {
 	var streamedImage = new StreamedImage();
-	streamedImage.image.uri = imageUri;
+	streamedImage.image.src = imageUri;
 	return streamedImage;
 }
