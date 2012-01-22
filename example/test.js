@@ -3,6 +3,7 @@ var secondFrame;
 var animation;
 var canvas;
 var context;
+var spriteSheet;
 
 var interval = 1000/20;
 var x = 64.0
@@ -25,6 +26,8 @@ function main() {
 	secondFrame = new StreamedImage();
 	secondFrame.image.src = "test2.png";
 	frames.push(secondFrame);
+	
+	spriteSheet = new SpriteSheet("oddball-bosses.png", 16, 16);
 	
 	animation = new Animation();
 	animation.setFrames(frames);
@@ -103,4 +106,7 @@ function step() {
 	// Draw current frame of the animation on there
 	var currentFrame = animation.getFrameAt(t);
 	currentFrame.draw(context, x, y, 32, 32);
+	
+	// Draw the sprite sheet somewhere
+	spriteSheet.draw(context, 6, x + 32, y + 32, 64, 64);
 }
