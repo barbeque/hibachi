@@ -24,16 +24,31 @@ function StreamedImage () {
 	this.draw = function(context, x, y, width, height) {
 		// Draws an image to a context
 		if(!this.isLoaded) {
-			// Draw something else
-			context.save();
-			context.fillStyle = '#f0f'; // pink
-			context.fillRect(x, y, width, height);
-			context.restore();
+			this.drawPlaceholder(context, x, y, width, height);
 		}
 		else {
 			// Draw the loaded texture
 			context.drawImage(this.image, x, y, width, height);
 		}
+	}
+
+	this.drawPortion = function(context, srcX, srcY, srcW, srcH, destX, destY, destW, destH) {
+		// Draws an image to a context
+		if(!this.isLoaded) {
+			this.drawPlaceholder(context, destX, destY, destW, destH);
+		}
+		else {
+			// Draw the loaded texture
+			context.drawImage(this.image, srcX, srcY, srcW, srcH, destX, destY, destW, destH);
+		}
+	}
+
+	this.drawPlaceholder = function(context, x, y, width, height) {
+		// Draw something else
+		context.save();
+		context.fillStyle = '#f0f'; // pink
+		context.fillRect(x, y, width, height);
+		context.restore();
 	}
 }
 
