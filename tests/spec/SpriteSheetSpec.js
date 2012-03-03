@@ -35,4 +35,27 @@ describe("SpriteSheet", function() {
 			expect(calculated.x).toEqual(0);
 			expect(calculated.y).toEqual(32);
 		});
+		it("should return valid coordinates all the way to the end of the available sprites", function() {
+			var spriteSheet = new SpriteSheet("dummy.png", 32, 32);
+			spriteSheet.image = { isLoaded: true, image: { width: 64, height: 64 } };
+			
+			for(var i = 0; i < 4; i++) {
+				var pos = spriteSheet.calculateSourcePosition(i);
+				expect(pos.x).toBeGreaterThan(-1);
+				expect(pos.x).toBeLessThan(65);
+				expect(pos.y).toBeGreaterThan(-1);
+				expect(pos.y).toBeLessThan(65);
+			}
+		});
+		it("should throw an error if the provided index is negative", function() {
+			var spriteSheet = new SpriteSheet("dummy.png", 32, 32);
+			spriteSheet.image = { isLoaded: true, image: { width: 64, height: 64 } };
+			expect(function() { spriteSheet.calculateSourcePosition(-1) }).toThrow(new Error("Cannot have a negative index"));
+		});
+		it("should throw an error if the provided index is outside the bounds of the image", function() {
+			var spriteSheet = new SpriteSheet("dummy.png", 32, 32);
+			spriteSheet.image = { isLoaded: true, image: { width: 64, height: 64 } };
+			// maximum index: 3
+			expect(function() { spriteSheet.calculateSourcePosition(4) }).toThrow(new Error("Index is above the maximum of 3"));
+		});
 });

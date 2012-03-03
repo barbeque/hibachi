@@ -23,10 +23,18 @@ SpriteSheet = function(imageUrl, spriteWidth, spriteHeight) {
 	}
 	
 	this.calculateSourcePosition = function(index) {
+		if(index < 0) {
+			throw new Error("Cannot have a negative index");
+		}
+		
 		if(this.image.isLoaded) {
 			// Some caching might be nice eventually
 			var spritesPerRow = Math.floor(this.image.image.width / this.spriteWidth);
 			var rowsPerSheet = Math.floor(this.image.image.height / this.spriteHeight);
+			
+			if(index >= spritesPerRow * rowsPerSheet) {
+				throw new Error("Index is above the maximum of " + ((spritesPerRow * rowsPerSheet) - 1));
+			}
 			
 			var sourceX = Math.floor(index % spritesPerRow);
 			var sourceY = Math.floor(index / spritesPerRow);
