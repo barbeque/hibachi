@@ -28,7 +28,7 @@ SpriteSheet = function(imageUrl, spriteWidth, spriteHeight) {
 			var spritesPerRow = Math.floor(this.image.image.width / this.spriteWidth);
 			var rowsPerSheet = Math.floor(this.image.image.height / this.spriteHeight);
 			
-			var sourceX = Math.floor(index % spritesPerRow) - 1;
+			var sourceX = Math.floor(index % spritesPerRow);
 			var sourceY = Math.floor(index / spritesPerRow);
 			
 			return { x: sourceX * this.spriteWidth, y: sourceY * this.spriteHeight };
