@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Hibachi text demo</title>
+	</head>
+	<body onload="main()">
+		<canvas id="canvas" width="640" height="480"/>
+
+		<script src="../Text.js"></script>
+		<script>
+		function main() {
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			context.save();
+			context.fillStyle = "orange";
+			context.fillRect(0, 0, canvas.width, canvas.height);
+			context.restore();
+
+			var reallyLongString = "I am a really long string that should be word wrapped as much as possible. I will go over one line of text and wrap all the way down the screen occupying tons of space. Please enjoy the hibachi library.";
+			var maximumWidth = canvas.width - 256;
+			var lineHeight = 20;
+			renderWrappedText(reallyLongString, 256, 256, maximumWidth, lineHeight, context);
+		}
+		</script>
+	</body>
+</html>
