@@ -15,6 +15,7 @@ Keyboard = function() {
 	this.downArrowKeyCode = 40;
 	this.leftArrowKeyCode = 37;
 	this.rightArrowKeyCode = 39;
+	this.spaceKeyCode = 32;
 	
 	/**
 		Private event handler for a key being pressed.
