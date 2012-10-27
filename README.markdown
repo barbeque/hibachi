@@ -2,7 +2,7 @@ hibachi
 ===
 This is the main directory for the Hibachi HTML5 game library.
 
-Unlike other libraries, the intent of Hibachi is to provide a series of highly-reusable utility types so that game developers can build their games their way without having to conform to using "magic" heavyweight modules.
+Unlike other "engine" libraries, the intent of Hibachi is to provide a series of highly-reusable utility types so that game developers can build their games their way without having to conform to using "magic" heavyweight modules.
 
 Right now the library only features a few modules:
 
