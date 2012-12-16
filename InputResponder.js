@@ -17,4 +17,11 @@ InputResponder = function(keyboard) {
 	this.onRightCursorKey = function(callback) {
 		setResponderForKey(keyboard.rightArrowKeyCode, callback);
 	}
+	this.react = function() {
+		for(var i in this.callbacks) {
+			if(keyboard.isKeyDown(i)) {
+				this.callbacks[i]();
+			}
+		}
+	}
 }
