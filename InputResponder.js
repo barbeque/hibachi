@@ -2,19 +2,19 @@ InputResponder = function(keyboard) {
 	this.keyboard = keyboard;
 	this.callbacks = {};
 
-	var onKey = function(keycode, callback) {
+	this.onKey = function(keycode, callback) {
 		this.callbacks[keycode] = callback;
 	}
-	var onUpCursorKey = function(callback) {
+	this.onUpCursorKey = function(callback) {
 		setResponderForKey(keyboard.upArrowKeyCode, callback);
 	}
-	var onDownCursorKey = function(callback) {
+	this.onDownCursorKey = function(callback) {
 		setResponderForKey(keyboard.downArrowKeyCode, callback);
 	}
-	var onLeftCursorKey = function(callback) {
+	this.onLeftCursorKey = function(callback) {
 		setResponderForKey(keyboard.leftArrowKeyCode, callback);
 	}
-	var onRightCursorKey = function(callback) {
+	this.onRightCursorKey = function(callback) {
 		setResponderForKey(keyboard.rightArrowKeyCode, callback);
 	}
 }
