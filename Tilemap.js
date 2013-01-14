@@ -5,7 +5,6 @@
 	Creates a new tile map.
 	@constructor
 	@class	A type containing a 2D tile map. Requires DataStructures.js
-	@this {Tilemap}
 	@param columns			The number of columns in the map.
 	@param rows				The number of rows in the map.
 	@param tileWidth		The width (in pixels) of each tile.
