@@ -1,8 +1,12 @@
 // Basic tile map useful for prototyping.
 // Requires hibachi DataStructures.js
 
-// userRenderTile: optional callback for rendering tiles to screen.
-
+/**
+	Creates a new tile map.
+	@constructor
+	@class	A type containing a 2D tile map. Requires DataStructures.js
+	@this {Tilemap}
+*/
 Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 	this.renderTile = userRenderTile || defaultRenderTile;
 
@@ -21,6 +25,14 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 		}
 	}
 
+	/**
+		Draw the tilemap to screen.
+		@param canvas		html5 canvas.
+		@param context		html5 2d context.
+		@param scrollX		The x-offset from top left the scrolling is at.
+		@param scrollY		The y-offset from top left the scrolling is at.
+		@param tileImages	An object containing tile images. Passed verbatim to the render tile function.
+	*/
 	this.draw = function(canvas, context, scrollX, scrollY, tileImages) {
 		var startX = Math.floor(Math.max(0, scrollX / this.tileWidth));
 		var startY = Math.floor(Math.max(0, scrollY / this.tileHeight));
@@ -38,6 +50,15 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 		}
 	}
 
+	/**
+		Write an index to a large rectangular area (including a line).
+		@param startX			Start x index on the map.
+		@param startY			Start y index on the map.
+		@param finishX			Finish x index on the map (inclusive).
+		@param finishY			Finish y index on the map (inclusive).
+		@param indexToFillWith	The tile index to write to the map
+								between the coordinates given.
+	*/
 	this.fillRect = function(startX, startY, finishX, finishY, indexToFillWith) {
 		var c1 = Math.floor(Math.min(startX, finishX));
 		var c2 = Math.floor(Math.max(startX, finishX));
