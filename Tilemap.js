@@ -6,6 +6,11 @@
 	@constructor
 	@class	A type containing a 2D tile map. Requires DataStructures.js
 	@this {Tilemap}
+	@param columns			The number of columns in the map.
+	@param rows				The number of rows in the map.
+	@param tileWidth		The width (in pixels) of each tile.
+	@param tileHeight		The height (in pixels) of each tile.
+	@param userRenderTile	Optional. User function to control tile rendering.
 */
 Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 	this.renderTile = userRenderTile || defaultRenderTile;
