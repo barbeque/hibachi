@@ -11,7 +11,7 @@
 	@param tileHeight		The height (in pixels) of each tile.
 	@param userRenderTile	Optional. User function to control tile rendering.
 */
-Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
+var Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 	this.renderTile = userRenderTile || defaultRenderTile;
 
 	this.columns = columns;
@@ -20,7 +20,7 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 	this.tileHeight = tileHeight || 32;
 
 	if(!make2DArray) {
-		throw new ReferenceError("make2DArray not defined. Is DataStructures.js included?")
+		throw new ReferenceError("make2DArray not defined. Is DataStructures.js included?");
 	}
 	this.map = make2DArray(this.columns, this.rows);
 	for(var r = 0; r < this.rows; ++r) {
@@ -52,7 +52,7 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 				this.renderTile(context, index, tileImages, screenX, screenY, this.tileWidth, this.tileHeight);
 			}
 		}
-	}
+	};
 
 	/**
 		Write an index to a large rectangular area (including a line).
@@ -79,7 +79,7 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 				this.map[r][c] = indexToFillWith;
 			}
 		}
-	}
+	};
 
 	/**
 		Get all indexes of tiles captured in a screenspace rect.
@@ -88,13 +88,13 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 		@param startX	Top left X position of the rect (in pixels).
 		@param startY	Top left Y position of the rect (in pixels).
 		@param finishX	Bottom right X position of the rect (in pixels).
-		@param finishY 	Bottom right Y position of the rect (in pixels).
+		@param finishY	Bottom right Y position of the rect (in pixels).
 	*/
 	this.getIndexesInRect = function(startX, startY, finishX, finishY) {
-		var x1 = Math.min(startX, finishX));
-		var y1 = Math.min(startY, finishY));
-		var x2 = Math.max(startX, finishX));
-		var y2 = Math.max(startY, finishY));
+		var x1 = Math.min(startX, finishX);
+		var y1 = Math.min(startY, finishY);
+		var x2 = Math.max(startX, finishX);
+		var y2 = Math.max(startY, finishY);
 
 		var returns = [];
 
@@ -108,7 +108,7 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 		}
 
 		return returns;
-	}
+	};
 
 	function defaultRenderTile(context, tileIndex, tileImages, screenX, screenY, width, height) {
 		var t = tileImages[tileIndex];
@@ -117,14 +117,14 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 
 	/**
 		Converts screen coordinates to tile coordinates.
-		@param x 	The x-coordinate (in pixels)
-		@param y 	The y-coordinate (in pixels)
+		@param x	The x-coordinate (in pixels)
+		@param y	The y-coordinate (in pixels)
 		@return		An object with row and column coordinates.
 	*/
-	this.screenToTile(x, y) {
+	this.screenToTile = function(x, y) {
 		return {
 			row: Math.floor(Math.max(0, Math.min(this.rows - 1, y / this.tileHeight))),
 			column: Math.floor(Math.max(0, Math.min(this.columns - 1, x / this.tileWidth)))
 		};
-	}
-}
+	};
+};
