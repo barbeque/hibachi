@@ -81,8 +81,50 @@ Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 		}
 	}
 
+	/**
+		Get all indexes of tiles captured in a screenspace rect.
+		Useful for collision.
+
+		@param startX	Top left X position of the rect (in pixels).
+		@param startY	Top left Y position of the rect (in pixels).
+		@param finishX	Bottom right X position of the rect (in pixels).
+		@param finishY 	Bottom right Y position of the rect (in pixels).
+	*/
+	this.getIndexesInRect = function(startX, startY, finishX, finishY) {
+		var x1 = Math.min(startX, finishX));
+		var y1 = Math.min(startY, finishY));
+		var x2 = Math.max(startX, finishX));
+		var y2 = Math.max(startY, finishY));
+
+		var returns = [];
+
+		// TODO: do this in a better way that doesn't produce dupes.
+		var start = this.screenToTile(x1, y1);
+		var finish = this.screenToTile(x2, y2);
+		for(var r = start.row; r <= finish.row; ++r) {
+			for(var c = start.column; c <= finish.column; ++c) {
+				returns.append(this.map[r][c]);
+			}
+		}
+
+		return returns;
+	}
+
 	function defaultRenderTile(context, tileIndex, tileImages, screenX, screenY, width, height) {
 		var t = tileImages[tileIndex];
 		t.draw(context, screenX, screenY, width, height);
+	}
+
+	/**
+		Converts screen coordinates to tile coordinates.
+		@param x 	The x-coordinate (in pixels)
+		@param y 	The y-coordinate (in pixels)
+		@return		An object with row and column coordinates.
+	*/
+	this.screenToTile(x, y) {
+		return {
+			row: Math.floor(Math.max(0, Math.min(this.rows - 1, y / this.tileHeight))),
+			column: Math.floor(Math.max(0, Math.min(this.columns - 1, x / this.tileWidth)))
+		};
 	}
 }
