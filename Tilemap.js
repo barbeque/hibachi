@@ -103,7 +103,7 @@ var Tilemap = function(columns, rows, tileWidth, tileHeight, userRenderTile) {
 		var finish = this.screenToTile(x2, y2);
 		for(var r = start.row; r <= finish.row; ++r) {
 			for(var c = start.column; c <= finish.column; ++c) {
-				returns.append(this.map[r][c]);
+				returns.push(this.map[r][c]);
 			}
 		}
 
