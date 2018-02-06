@@ -16,7 +16,7 @@ Keyboard = function() {
 	this.leftArrowKeyCode = 37;
 	this.rightArrowKeyCode = 39;
 	this.spaceKeyCode = 32;
-	
+
 	/**
 		Private event handler for a key being pressed.
 		@param e key down event
@@ -24,7 +24,7 @@ Keyboard = function() {
 	this.onKeyDown = function(e) {
 		window.keyboardHandler.keyDownState[e.keyCode] = true;
 	}
-	
+
 	/**
 		Private event handler for a key being released.
 		@param e key up event
@@ -46,4 +46,43 @@ Keyboard = function() {
 */
 Keyboard.prototype.isKeyDown = function(keyId) {
 	return this.keyDownState[keyId];
+}
+
+/**
+	Convenience method for quickly looking up the state
+	of the keyboard cursor keys.
+	@param normalized	Pass 'true' if you want the output
+										vector to be normalized.
+	@return						A Y-down 2D vector which is not
+										normalized by default. Normalize
+										if you are directly using it
+										to influence movement of a character.
+*/
+Keyboard.prototype.getCursorKeyVector = function(normalized) {
+	var result = { x: 0, y: 0 };
+
+	if(this.keyDownState[this.upArrowKeyCode]) {
+		result.y -= 1;
+	}
+	if(this.keyDownState[this.downArrowKeyCode]) {
+		result.y += 1;
+	}
+	if(this.keyDownState[this.leftArrowKeyCode]) {
+		result.x -= 1;
+	}
+	if(this.keyDownState[this.rightArrowKeyCode]) {
+		result.x += 1;
+	}
+
+	if(normalized) {
+		// TODO: make an actual vector type
+		// and use that here instead.
+		var magnitude = Math.sqrt((result.x * result.x) + (result.y * result.y));
+		if(magnitude > 0) {
+			result.x /= magnitude;
+			result.y /= magnitude;
+		}
+	}
+
+	return result;
 }
