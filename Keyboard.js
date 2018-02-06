@@ -51,12 +51,8 @@ Keyboard.prototype.isKeyDown = function(keyId) {
 /**
 	Convenience method for quickly looking up the state
 	of the keyboard cursor keys.
-	@param normalized	Pass 'true' if you want the output
-										vector to be normalized.
-	@return						A Y-down 2D vector which is not
-										normalized by default. Normalize
-										if you are directly using it
-										to influence movement of a character.
+	@param normalized	Pass 'true' if you want the output vector to be normalized.
+	@return    A Y-down 2D vector which is not normalized by default. Normalize if you are directly using it to influence movement of a character.
 */
 Keyboard.prototype.getCursorKeyVector = function(normalized) {
 	var result = { x: 0, y: 0 };
