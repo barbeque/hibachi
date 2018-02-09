@@ -8,6 +8,7 @@ function loop(state) {
     for(var x = 0; x < 100; ++x) { // TODO: same deal as previous
       var xOffset = (y % 2 == 0) ? 0 : -64; // half offset to stagger the rows
       var zOffset = state.map[y][x].height;
+      const PIXELS_PER_HEIGHT_UNIT = 10;
 
       // TODO: Z
       // TODO: culling
@@ -15,7 +16,7 @@ function loop(state) {
         state.context,
         state.map[y][x].tile,
         x * 128 + xOffset - state.scroll.x,
-        (y * 32 - state.scroll.y) - (zOffset * 10),
+        (y * 32 - state.scroll.y) - (zOffset * PIXELS_PER_HEIGHT_UNIT),
         128,
         128
       );
@@ -55,6 +56,7 @@ function setup() {
 }
 
 function generateTileMap() {
+  const MAX_HEIGHT = 4;
   const NUMBER_OF_TILES = 8 * 5;
 
   var output = [];
@@ -63,8 +65,8 @@ function generateTileMap() {
 
     for(var x = 0; x < 100; ++x) {
       output[y].push({
-        height: Math.floor(Math.random() * 4),
-        tile: Math.floor(Math.random() * (NUMBER_OF_TILES))
+        height: Math.floor(Math.random() * MAX_HEIGHT),
+        tile: Math.floor(Math.random() * NUMBER_OF_TILES)
       });
     }
   }
