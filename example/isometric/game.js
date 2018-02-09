@@ -28,6 +28,11 @@ function loop(state) {
   state.scroll.y += dv.y * 25;
 }
 
+function resizeCanvas(state) {
+  state.canvas.width = window.innerWidth;
+  state.canvas.height = window.innerHeight;
+}
+
 function setup() {
   var state = {
     updateInterval: 1000 / 30,
@@ -42,6 +47,11 @@ function setup() {
 
   var stepStub = function() { loop(state); };
   setInterval(stepStub, state.updateInterval);
+
+  var resizeStub = function() { resizeCanvas(state); };
+
+  window.addEventListener('resize', resizeStub, false);
+  resizeCanvas(state);
 }
 
 function generateTileMap() {
