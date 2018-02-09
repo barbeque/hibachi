@@ -23,23 +23,23 @@ function StreamedImage () {
 	*/
 	this.draw = function(context, x, y, width, height) {
 		// Draws an image to a context
-		if(!this.isLoaded) {
-			this.drawPlaceholder(context, x, y, width, height);
-		}
-		else {
+		if(this.isLoaded) {
 			// Draw the loaded texture
 			context.drawImage(this.image, x, y, width, height);
+		}
+		else {
+			this.drawPlaceholder(context, x, y, width, height);
 		}
 	}
 
 	this.drawPortion = function(context, srcX, srcY, srcW, srcH, destX, destY, destW, destH) {
 		// Draws an image to a context
-		if(!this.isLoaded) {
-			this.drawPlaceholder(context, destX, destY, destW, destH);
-		}
-		else {
+		if(this.isLoaded) {
 			// Draw the loaded texture
 			context.drawImage(this.image, srcX, srcY, srcW, srcH, destX, destY, destW, destH);
+		}
+		else {
+			this.drawPlaceholder(context, destX, destY, destW, destH);
 		}
 	}
 
