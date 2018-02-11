@@ -12,6 +12,7 @@ Right now the library only features a few modules:
 * <tt>StreamedImage.js</tt> - Provides a placeholder if an image is not fully loaded yet
 * <tt>SpriteSheet.js</tt> - Provides an easy way to draw sprites from a uniformly sized sprite sheet
 * <tt>Text.js</tt> - Helper functions for text rendering, including word wrapped text
+* <tt>Vec2.js</tt> - Early 2D vector type (tested patches accepted)
 
 There's also some partial examples in <tt>example</tt> and some Jasmine BDD tests in <tt>tests</tt>.
 
