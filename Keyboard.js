@@ -51,11 +51,14 @@ Keyboard.prototype.isKeyDown = function(keyId) {
 /**
 	Convenience method for quickly looking up the state
 	of the keyboard cursor keys.
+
+	Requires the Vec2 data structure to work.
+	
 	@param normalized	Pass 'true' if you want the output vector to be normalized.
 	@return    A Y-down 2D vector which is not normalized by default. Normalize if you are directly using it to influence movement of a character.
 */
 Keyboard.prototype.getCursorKeyVector = function(normalized) {
-	var result = { x: 0, y: 0 };
+	var result = new Vec2(0, 0);
 
 	if(this.keyDownState[this.upArrowKeyCode]) {
 		result.y -= 1;
@@ -71,13 +74,7 @@ Keyboard.prototype.getCursorKeyVector = function(normalized) {
 	}
 
 	if(normalized) {
-		// TODO: make an actual vector type
-		// and use that here instead.
-		var magnitude = Math.sqrt((result.x * result.x) + (result.y * result.y));
-		if(magnitude > 0) {
-			result.x /= magnitude;
-			result.y /= magnitude;
-		}
+		return result.normalized();
 	}
 
 	return result;
