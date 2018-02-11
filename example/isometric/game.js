@@ -13,7 +13,6 @@ function loop(state) {
       var zOffset = state.map[y][x].height;
       const PIXELS_PER_HEIGHT_UNIT = 10;
 
-      // TODO: Z
       // TODO: culling
       state.tiles.draw(
         state.context,
