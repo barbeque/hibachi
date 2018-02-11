@@ -19,3 +19,7 @@ Vec2.prototype.normalized = function() {
 
   return new Vec2(resultX, resultY);
 }
+
+Vec2.prototype.toString = function() {
+  return "<" + this.x + ", " + this.y + ">";
+}
