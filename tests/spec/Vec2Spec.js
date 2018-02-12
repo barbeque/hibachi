@@ -70,3 +70,35 @@ describe("Vec2.toString", () => {
     expect(debugString).toEqual("<0, 0>");
   });
 });
+
+describe("Vec2.add", () => {
+  it('works', () => {
+    var v1 = new Vec2(10, 12);
+    var v2 = new Vec2(22, 33);
+    var result = v1.add(v2);
+    expect(result).not.toBeUndefined();
+    expect(result.x).toEqual(32);
+    expect(result.y).toEqual(45);
+  });
+});
+
+describe("Vec2.subtract", () => {
+  it('works', () => {
+    var v1 = new Vec2(10, 12);
+    var v2 = new Vec2(22, 33);
+    var result = v2.subtract(v1);
+    expect(result).not.toBeUndefined();
+    expect(result.x).toEqual(12);
+    expect(result.y).toEqual(21);
+  });
+});
+
+describe("Vec2.dot", () => {
+  it('works', () => {
+    var v1 = new Vec2(3, 0);
+    var v2 = new Vec2(0, 4);
+    var result = v1.dot(v2);
+    expect(result).not.toBeUndefined();
+    expect(result).toEqual(0);
+  });
+});
