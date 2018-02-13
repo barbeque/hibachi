@@ -22,4 +22,4 @@ Please let me know if you end up using the library - I'm always interested to se
 
 # Dependencies
 Some types rely on other types to provide their functionality.
-[dependency graph](.meta/dependencies.png)
+![dependency graph](.meta/dependencies.png)
