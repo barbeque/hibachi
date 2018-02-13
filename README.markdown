@@ -19,3 +19,7 @@ There's also some partial examples in <tt>example</tt> and some Jasmine BDD test
 If you're ready to start building a game with hibachi, an example game shell is provided in `example/shell` that will allow you to quickly get past what little HTML5 boilerplate exists.
 
 Please let me know if you end up using the library - I'm always interested to see what people do with the building blocks I provide.
+
+# Dependencies
+Some types rely on other types to provide their functionality.
+[dependency graph](.meta/dependencies.png)
