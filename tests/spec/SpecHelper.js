@@ -5,5 +5,5 @@ beforeEach(function() {
       return player.currentlyPlayingSong === expectedSong
           && player.isPlaying;
     }
-  })
+  });
 });

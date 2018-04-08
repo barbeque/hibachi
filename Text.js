@@ -27,4 +27,4 @@ var renderWrappedText = function(text, x, y, maximumWidth, lineHeight, context) 
 */
 var renderText = function(text, x, y, context) {
 	context.fillText(text, x, y);
-}
+};

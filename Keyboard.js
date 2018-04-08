@@ -23,7 +23,7 @@ Keyboard = function() {
 	*/
 	this.onKeyDown = function(e) {
 		window.keyboardHandler.keyDownState[e.keyCode] = true;
-	}
+	};
 
 	/**
 		Private event handler for a key being released.
@@ -32,12 +32,12 @@ Keyboard = function() {
 	this.onKeyUp = function(e) {
 		// It's assumed that 'this' is a DOMWindow. There's a hack for Jasmine to work properly
 		window.keyboardHandler.keyDownState[e.keyCode] = false;
-	}
+	};
 
 	window.addEventListener('keydown', this.onKeyDown, true);
 	window.addEventListener('keyup', this.onKeyUp, true);
 	window.keyboardHandler = this;
-}
+};
 
 /**
 	Tells us whether or not a key is currently down.
@@ -46,14 +46,14 @@ Keyboard = function() {
 */
 Keyboard.prototype.isKeyDown = function(keyId) {
 	return this.keyDownState[keyId];
-}
+};
 
 /**
 	Convenience method for quickly looking up the state
 	of the keyboard cursor keys.
 
 	Requires the Vec2 data structure to work.
-	
+
 	@param normalized	Pass 'true' if you want the output vector to be normalized.
 	@return    A Y-down 2D vector which is not normalized by default. Normalize if you are directly using it to influence movement of a character.
 */
@@ -78,4 +78,4 @@ Keyboard.prototype.getCursorKeyVector = function(normalized) {
 	}
 
 	return result;
-}
+};

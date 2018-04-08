@@ -6,7 +6,6 @@ describe("Keyboard", function() {
 		for(i = 0; i < 255; i++) {
 			expect(keyboard.isKeyDown(i)).toEqual(false);
 		}
-		delete keyboard;
 	});
 
 	it("should let me trigger the same key twice", function() {
@@ -19,7 +18,6 @@ describe("Keyboard", function() {
 		expect(keyboard.isKeyDown(37)).toEqual(false);
 		keyboard.onKeyDown(e);
 		expect(keyboard.isKeyDown(38)).toEqual(true);
-		delete keyboard;
 	});
 	it("lets me press and release", function() {
 		var keyboard = new Keyboard();
@@ -32,7 +30,6 @@ describe("Keyboard", function() {
 		expect(keyboard.isKeyDown(38)).toEqual(true);
 		keyboard.onKeyUp(e);
 		expect(keyboard.isKeyDown(38)).toEqual(false);
-		delete keyboard;
 	});
 });
 
@@ -50,8 +47,8 @@ describe("Keyboard.getCursorKeyVector", function() {
 		keyboard = new Keyboard();
 	});
 	afterEach(function() {
-		delete keyboard;
-	})
+		keyboard = null;
+	});
 
 	it("returns <0, 0> vector by default", function() {
 		var kv = keyboard.getCursorKeyVector();
@@ -93,7 +90,7 @@ describe("Keyboard.getCursorKeyVector with multiple keys", function() {
 		keyboard.onKeyDown(makeKeyDownObject(keyboard.leftArrowKeyCode));
 	});
 	afterEach(function() {
-		delete keyboard;
+		keyboard = null;
 	});
 
 	it("should produce denormalized vector by default", function() {

@@ -11,7 +11,7 @@ function StreamedImage () {
 	this.image.onload = function() {
 		// Informs us when the image is available.
 		this.owner.isLoaded = true;
-	}
+	};
 	/**
 	*  Draws the image to screen, or a surrogate if the image is not
 	*  yet loaded.
@@ -30,7 +30,7 @@ function StreamedImage () {
 		else {
 			this.drawPlaceholder(context, x, y, width, height);
 		}
-	}
+	};
 
 	this.drawPortion = function(context, srcX, srcY, srcW, srcH, destX, destY, destW, destH) {
 		// Draws an image to a context
@@ -41,7 +41,7 @@ function StreamedImage () {
 		else {
 			this.drawPlaceholder(context, destX, destY, destW, destH);
 		}
-	}
+	};
 
 	this.drawPlaceholder = function(context, x, y, width, height) {
 		// Draw something else
@@ -49,11 +49,11 @@ function StreamedImage () {
 		context.fillStyle = '#f0f'; // pink
 		context.fillRect(x, y, width, height);
 		context.restore();
-	}
+	};
 }
 
 GetStreamedImage = function(imageUri) {
 	var streamedImage = new StreamedImage();
 	streamedImage.image.src = imageUri;
 	return streamedImage;
-}
+};
