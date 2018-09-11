@@ -1,6 +1,8 @@
 const MAP_HEIGHT = 100;
 const MAP_WIDTH = 100;
 
+const TILE_WIDTH = 128;
+
 function loop(state) {
   // Wipe out BG
   state.context.fillStyle = "black";
@@ -17,10 +19,10 @@ function loop(state) {
       state.tiles.draw(
         state.context,
         state.map[y][x].tile,
-        x * 128 + xOffset - state.scroll.x,
+        x * TILE_WIDTH + xOffset - state.scroll.x,
         (y * 32 - state.scroll.y) - (zOffset * PIXELS_PER_HEIGHT_UNIT),
-        128,
-        128
+        TILE_WIDTH,
+        TILE_WIDTH
       );
     }
   }
